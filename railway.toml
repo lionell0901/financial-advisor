@@ -1,0 +1,12 @@
+[build]
+builder = "nixpacks"
+
+[deploy]
+healthcheckPath = "/health"
+healthcheckTimeout = 300
+restartPolicyType = "always"
+
+# Railway $5 요금제 최적화 설정
+[variables]
+ENVIRONMENT = "production"
+DEBUG = "False"
