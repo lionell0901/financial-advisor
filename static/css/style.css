@@ -1,0 +1,484 @@
+/* 토스 스타일 CSS - 중장년층 친화적 디자인 */
+
+/* 전역 설정 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    /* 토스 컬러 팔레트 */
+    --primary: #0064FF;
+    --primary-hover: #0056E3;
+    --secondary: #F8FAFF;
+    --success: #00D563;
+    --warning: #FF6B00;
+    --danger: #FF4757;
+    
+    /* 그레이스케일 */
+    --gray-50: #F9FAFB;
+    --gray-100: #F3F4F6;
+    --gray-200: #E5E7EB;
+    --gray-300: #D1D5DB;
+    --gray-400: #9CA3AF;
+    --gray-500: #6B7280;
+    --gray-600: #4B5563;
+    --gray-700: #374151;
+    --gray-800: #1F2937;
+    --gray-900: #111827;
+    
+    /* 폰트 사이즈 - 중장년층 고려하여 큰 사이즈 */
+    --text-xs: 14px;
+    --text-sm: 16px;
+    --text-base: 18px;
+    --text-lg: 20px;
+    --text-xl: 24px;
+    --text-2xl: 32px;
+    --text-3xl: 40px;
+    
+    /* 간격 */
+    --spacing-2: 8px;
+    --spacing-3: 12px;
+    --spacing-4: 16px;
+    --spacing-5: 20px;
+    --spacing-6: 24px;
+    --spacing-8: 32px;
+    --spacing-10: 40px;
+    --spacing-12: 48px;
+    
+    /* 박스 쉐도우 */
+    --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.1);
+    --shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.1);
+    
+    /* 보더 라디우스 */
+    --radius-sm: 8px;
+    --radius: 12px;
+    --radius-lg: 16px;
+    --radius-xl: 24px;
+}
+
+body {
+    font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-size: var(--text-base);
+    line-height: 1.6;
+    color: var(--gray-800);
+    background-color: var(--gray-50);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 var(--spacing-4);
+}
+
+/* 헤더 */
+.header {
+    background: linear-gradient(135deg, var(--primary) 0%, #0052CC 100%);
+    color: white;
+    padding: var(--spacing-12) 0;
+    text-align: center;
+}
+
+.header-content h1.logo {
+    font-size: var(--text-3xl);
+    font-weight: 700;
+    margin-bottom: var(--spacing-3);
+}
+
+.tagline {
+    font-size: var(--text-lg);
+    opacity: 0.9;
+    font-weight: 400;
+}
+
+/* 메인 콘텐츠 */
+.main {
+    padding: var(--spacing-12) 0;
+}
+
+/* 인트로 섹션 */
+.intro-section {
+    margin-bottom: var(--spacing-12);
+}
+
+.intro-card {
+    background: white;
+    padding: var(--spacing-10);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow);
+    text-align: center;
+    border: 1px solid var(--gray-100);
+}
+
+.intro-title {
+    font-size: var(--text-2xl);
+    font-weight: 600;
+    color: var(--gray-800);
+    margin-bottom: var(--spacing-4);
+}
+
+.intro-desc {
+    font-size: var(--text-lg);
+    color: var(--gray-600);
+    line-height: 1.7;
+}
+
+/* 질문 입력 섹션 */
+.question-section {
+    margin-bottom: var(--spacing-10);
+}
+
+.question-card {
+    background: white;
+    padding: var(--spacing-8);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow);
+    border: 1px solid var(--gray-100);
+}
+
+.input-group {
+    margin-bottom: var(--spacing-6);
+}
+
+.question-input {
+    width: 100%;
+    padding: var(--spacing-5);
+    border: 2px solid var(--gray-200);
+    border-radius: var(--radius);
+    font-size: var(--text-base);
+    font-family: inherit;
+    resize: vertical;
+    min-height: 120px;
+    transition: all 0.2s ease;
+}
+
+.question-input:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(0, 100, 255, 0.1);
+}
+
+.question-input::placeholder {
+    color: var(--gray-400);
+    font-size: var(--text-sm);
+}
+
+.input-footer {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: var(--spacing-2);
+}
+
+.char-count {
+    font-size: var(--text-xs);
+    color: var(--gray-400);
+}
+
+.ask-button {
+    width: 100%;
+    padding: var(--spacing-5) var(--spacing-6);
+    background: var(--primary);
+    color: white;
+    border: none;
+    border-radius: var(--radius);
+    font-size: var(--text-lg);
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacing-2);
+    min-height: 56px;
+}
+
+.ask-button:hover:not(:disabled) {
+    background: var(--primary-hover);
+    transform: translateY(-1px);
+}
+
+.ask-button:disabled {
+    background: var(--gray-300);
+    cursor: not-allowed;
+    transform: none;
+}
+
+.loading-spinner {
+    width: 20px;
+    height: 20px;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-top: 2px solid white;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* 빠른 질문 버튼들 */
+.quick-questions {
+    margin-bottom: var(--spacing-12);
+}
+
+.section-title {
+    font-size: var(--text-xl);
+    font-weight: 600;
+    color: var(--gray-800);
+    margin-bottom: var(--spacing-6);
+    text-align: center;
+}
+
+.quick-buttons {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: var(--spacing-4);
+}
+
+.quick-btn {
+    padding: var(--spacing-4) var(--spacing-5);
+    background: white;
+    border: 2px solid var(--gray-200);
+    border-radius: var(--radius);
+    font-size: var(--text-sm);
+    font-weight: 500;
+    color: var(--gray-700);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-align: left;
+}
+
+.quick-btn:hover {
+    border-color: var(--primary);
+    color: var(--primary);
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-sm);
+}
+
+/* 답변 섹션 */
+.answer-section {
+    margin-bottom: var(--spacing-12);
+    animation: slideUp 0.3s ease-out;
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.answer-card {
+    background: white;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-lg);
+    border: 1px solid var(--gray-100);
+    overflow: hidden;
+}
+
+.answer-header {
+    background: var(--secondary);
+    padding: var(--spacing-6);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--gray-100);
+}
+
+.answer-title {
+    font-size: var(--text-xl);
+    font-weight: 600;
+    color: var(--gray-800);
+}
+
+.confidence-badge {
+    background: var(--success);
+    color: white;
+    padding: var(--spacing-2) var(--spacing-3);
+    border-radius: var(--radius-sm);
+    font-size: var(--text-xs);
+    font-weight: 600;
+}
+
+.answer-content {
+    padding: var(--spacing-8);
+    font-size: var(--text-base);
+    line-height: 1.8;
+    color: var(--gray-800);
+}
+
+.answer-content h4 {
+    color: var(--primary);
+    margin: var(--spacing-4) 0 var(--spacing-2) 0;
+    font-weight: 600;
+}
+
+.answer-content ul {
+    margin: var(--spacing-3) 0;
+    padding-left: var(--spacing-5);
+}
+
+.answer-content li {
+    margin: var(--spacing-2) 0;
+}
+
+.answer-footer {
+    background: var(--gray-50);
+    padding: var(--spacing-6);
+    border-top: 1px solid var(--gray-100);
+}
+
+.sources {
+    margin-bottom: var(--spacing-4);
+    font-size: var(--text-sm);
+    color: var(--gray-600);
+}
+
+.disclaimer {
+    font-size: var(--text-xs);
+    color: var(--gray-500);
+    line-height: 1.5;
+}
+
+.disclaimer p {
+    background: var(--warning);
+    color: white;
+    padding: var(--spacing-3);
+    border-radius: var(--radius-sm);
+}
+
+/* 주제 그리드 */
+.topics-section {
+    margin-bottom: var(--spacing-12);
+}
+
+.topics-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: var(--spacing-5);
+}
+
+.topic-card {
+    background: white;
+    padding: var(--spacing-6);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow);
+    border: 1px solid var(--gray-100);
+    text-align: center;
+    transition: all 0.2s ease;
+    cursor: pointer;
+}
+
+.topic-card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+    border-color: var(--primary);
+}
+
+.topic-icon {
+    font-size: var(--text-3xl);
+    margin-bottom: var(--spacing-4);
+}
+
+.topic-title {
+    font-size: var(--text-lg);
+    font-weight: 600;
+    color: var(--gray-800);
+    margin-bottom: var(--spacing-2);
+}
+
+.topic-desc {
+    font-size: var(--text-sm);
+    color: var(--gray-600);
+}
+
+/* 푸터 */
+.footer {
+    background: var(--gray-800);
+    color: var(--gray-300);
+    padding: var(--spacing-8) 0;
+    text-align: center;
+    margin-top: var(--spacing-12);
+}
+
+.footer-text {
+    font-size: var(--text-sm);
+}
+
+.footer-text a {
+    color: var(--primary);
+    text-decoration: none;
+}
+
+.footer-text a:hover {
+    text-decoration: underline;
+}
+
+/* 반응형 디자인 */
+@media (max-width: 768px) {
+    :root {
+        --text-base: 16px;
+        --text-lg: 18px;
+        --text-xl: 22px;
+        --text-2xl: 28px;
+        --text-3xl: 32px;
+    }
+    
+    .container {
+        padding: 0 var(--spacing-3);
+    }
+    
+    .header {
+        padding: var(--spacing-8) 0;
+    }
+    
+    .main {
+        padding: var(--spacing-8) 0;
+    }
+    
+    .intro-card, .question-card, .answer-card {
+        padding: var(--spacing-6);
+    }
+    
+    .quick-buttons {
+        grid-template-columns: 1fr;
+    }
+    
+    .topics-grid {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: var(--spacing-4);
+    }
+    
+    .answer-header {
+        flex-direction: column;
+        gap: var(--spacing-3);
+        text-align: center;
+    }
+}
+
+/* 접근성 개선 */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* 고대비 모드 지원 */
+@media (prefers-contrast: high) {
+    :root {
+        --gray-100: #E0E0E0;
+        --gray-200: #C0C0C0;
+        --gray-300: #A0A0A0;
+    }
+}

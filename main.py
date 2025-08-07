@@ -7,11 +7,14 @@ Phase 2: SQLite DB로 확장 예정
 Phase 3: 외부 LLM API 연동 예정
 """
 from fastapi import FastAPI, HTTPException
+from fastapi.staticfiles import StaticFiles
+from fastapi.responses import FileResponse
 from pydantic import BaseModel, Field
 from config import settings
 import logging
 from datetime import datetime
 from typing import List, Optional
+import os
 
 # === 로깅 설정 ===
 logging.basicConfig(
@@ -28,6 +31,12 @@ app = FastAPI(
     docs_url="/docs" if settings.DEBUG else None,  # 프로덕션에서는 docs 숨김
     redoc_url="/redoc" if settings.DEBUG else None
 )
+
+# === 정적 파일 서빙 설정 ===
+# 정적 파일 디렉토리가 존재하는지 확인하고 마운트
+static_dir = os.path.join(os.getcwd(), "static")
+if os.path.exists(static_dir):
+    app.mount("/static", StaticFiles(directory="static"), name="static")
 
 # === 데이터 모델 정의 ===
 class QuestionRequest(BaseModel):
@@ -212,7 +221,13 @@ def find_best_match(question: str) -> tuple:
 # === API 엔드포인트 ===
 @app.get("/")
 def read_root():
-    """서비스 정보 및 안내"""
+    """웹 인터페이스 또는 API 정보 제공"""
+    # 정적 파일이 있으면 웹 인터페이스 제공
+    index_path = os.path.join(static_dir, "index.html")
+    if os.path.exists(index_path):
+        return FileResponse(index_path)
+    
+    # 정적 파일이 없으면 기존 JSON 응답
     return {
         "message": f"{settings.APP_NAME}에 오신 것을 환영합니다!",
         "version": settings.VERSION,
